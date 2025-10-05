@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+typedef struct {
+    float pos_x, pos_y;
+} Entity;
+
+int detect_collision(Entity *obj1, Entity *obj2) {
+    return (obj1->pos_x == obj2->pos_x && obj1->pos_y == obj2->pos_y);
+}
+
+int main() {
+    Entity hero, foe;
+    Entity *hero_ptr = &hero;
+    Entity *foe_ptr = &foe;
+    
+    printf("Masukkan posisi hero (x y): ");
+    scanf("%f %f", &hero_ptr->pos_x, &hero_ptr->pos_y);
+    
+    printf("Masukkan posisi foe (x y): ");
+    scanf("%f %f", &foe_ptr->pos_x, &foe_ptr->pos_y);
+    
+    if (detect_collision(hero_ptr, foe_ptr)) {
+        printf("Tabrakan!\n");
+    } else {
+        printf("Tidak tabrakan\n");
+    }
+    
+    return 0;
+}
