@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+
+#define HITBOX_SIZE 2.0
+
+typedef struct {
+    float x;
+    float y;
+} Hitbox;
+
+bool isColliding(Hitbox* a, Hitbox* b) {
+    return (
+        fabs(a->x - b->x) < HITBOX_SIZE &&
+        fabs(a->y - b->y) < HITBOX_SIZE
+    );
+}
+
+int main() {
+    Hitbox player, enemy;
+
+    printf("Masukkan posisi Player (x y):\n");
+    scanf("%f %f", &player.x, &player.y);
+
+    printf("Masukkan posisi Enemy (x y):\n");
+    scanf("%f %f", &enemy.x, &enemy.y);
+
+    if (isColliding(&player, &enemy)) {
+        printf("Terjadi tabrakan!\n");
+    } else {
+        printf("Tidak ada tabrakan.\n");
+    }
+
+    return 0;
+}
